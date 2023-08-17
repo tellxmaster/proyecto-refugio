@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { apiRefugio } from '../components/apis/Endpoint';
 
 const Inicio = () => {
@@ -58,7 +59,7 @@ const Inicio = () => {
                                     <hr />
                                 <h5 className="card-title">{numAlertaAlimentos}</h5>
                                 <p className="card-text">Número total de alertas para alimentos que están por debajo del umbral.</p>
-                                <a href="/ruta-a-detalles-alimentos" className="btn btn-light text-primary">Ver más</a>
+                                <Link to="/alimentos" className="btn btn-light text-primary">Ver más</Link>
                             </div>
                         </div>
                     </div>
@@ -70,7 +71,7 @@ const Inicio = () => {
                                 <hr />
                                 <h5 className="card-title">{numAlertaMedicamento}</h5>
                                 <p className="card-text">Número total de alertas para medicamentos que están por debajo del umbral.</p>
-                                <a href="/ruta-a-detalles-medicamentos" className="btn btn-light text-primary">Ver más</a>
+                                <Link to="/medicamentos" className="btn btn-light text-primary">Ver más</Link>
                             </div>
                         </div>
                     </div>
@@ -97,7 +98,7 @@ const Inicio = () => {
                                         <td>{item.quantity} {item.unit}</td>
                                         <td>Alerta por existencias</td>
                                         <td>
-                                            <button className="btn btn-primary">Reabastece</button>
+                                            <Link to={item.type === "Alimento" ? '/alimentos' : '/medicamentos'} className="btn btn-primary">Reabastece</Link>
                                         </td>
                                     </tr>
                                 ))}
